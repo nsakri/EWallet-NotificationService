@@ -22,11 +22,17 @@ class NotificationServiceTest {
 
     @Test
     void testSendMerchantNotification() {
-        assertDoesNotThrow(() -> notificationService.sendMerchantNotification(request));
+        var response = notificationService.sendMerchantNotification(request);
+        assertNotNull(response);
+        assertTrue(response.isSuccess());
+        assertEquals("Merchant notification sent successfully.", response.getMessage());
     }
 
     @Test
     void testSendUserNotification() {
-        assertDoesNotThrow(() -> notificationService.sendUserNotification(request));
+        var response = notificationService.sendUserNotification(request);
+        assertNotNull(response);
+        assertTrue(response.isSuccess());
+        assertEquals("User notification sent successfully.", response.getMessage());
     }
 }
